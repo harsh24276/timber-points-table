@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>TIMBER Score Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body>
+  <div id="toastContainer"></div>
+  <div id="bg-text">TIMBER</div>
+
+  <div class="container">
+    <h2>TIMBER Score Calculator</h2>
+
+    <div id="setupArea">
+      <button id="historyBtn" onclick="openHistoryModal()"> View Game History</button>
+      <hr style="border: 0; height: 1px; background: #d1c0c000; margin: 15px 0;">
+      <label for="numPlayers" style="font-weight: 600; display: block; margin-bottom: 5px; text-align: left;">Number of Players</label>
+      <select id="numPlayers" onchange="createPlayerInputs()">
+        <option value="2">2 Players</option>
+        <option value="3" selected>3 Players</option>
+        <option value="4">4 Players</option>
+        <option value="5">5 Players</option>
+        <option value="6">6 Players</option>
+        <option value="7">7 Players</option>
+        <option value="8">8 Players</option>
+      </select>
+
+      <div id="playerNamesDiv"></div>
+      <button onclick="startGame()" style="margin-top: 15px;">Start New Game</button>
+    </div>
+
+    <button id="resetBtn" onclick="resetGame()">Start Fresh / Exit Game</button>
+    <div id="gameArea"></div>
+  </div>
+
+  <div id="historyModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeHistoryModal()">&times;</span>
+      <h2 style="margin-top: 0;">Saved Games History</h2>
+      <div id="historyList"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
