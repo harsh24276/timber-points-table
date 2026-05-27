@@ -56,6 +56,22 @@ function createPlayerInputs() {
 
 createPlayerInputs();
 
+function goHome() {
+  currentGameId = null;
+  document.getElementById('gameArea').innerHTML = '';
+  document.getElementById('setupArea').style.display = 'block';
+  document.getElementById('hero-header').style.display = 'block';
+  document.getElementById('historyBtn').style.display = 'block';
+  document.getElementById('newGameBtn').style.display = 'none';
+}
+
+window.addEventListener('popstate', function() {
+  if (document.getElementById('setupArea').style.display === 'none') {
+    goHome();
+    history.pushState({ page: 'home' }, '');
+  }
+});
+
 function startGame() {
   currentGameId = null;
   playerNames = [];
@@ -78,6 +94,7 @@ function startGame() {
   document.getElementById('historyBtn').style.display = 'none';
 
   saveGameState();
+  history.pushState({ page: 'game' }, '');
   renderRoundInput();
   renderTable();
 }
@@ -202,6 +219,7 @@ function newGame() {
   round = 1;
   document.getElementById('newGameBtn').style.display = 'none';
   saveGameState();
+  history.pushState({ page: 'game' }, '');
   renderRoundInput();
   renderTable();
 }
@@ -250,6 +268,7 @@ function loadGameFromHistory(id) {
     document.getElementById('hero-header').style.display = 'none';
     document.getElementById('historyBtn').style.display = 'none';
     document.getElementById('newGameBtn').style.display = 'none';
+    history.pushState({ page: 'game' }, '');
 
     const remaining = playerNames.filter((_, i) => !eliminated[i]);
     if (remaining.length === 1) {
