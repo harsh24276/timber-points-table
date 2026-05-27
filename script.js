@@ -92,7 +92,7 @@ function renderRoundInput() {
       html += `<input type="number" id="s${i}" placeholder="${playerNames[i]}'s score" min="0">`;
     }
   }
-  html += `<button onclick="addRound()" style="margin-top:15px;">Add Round</button>`;
+  html += `<button onclick="document.activeElement.blur(); addRound()" style="margin-top:15px;">Add Round</button>`;
   document.getElementById('gameArea').innerHTML = html;
 }
 
