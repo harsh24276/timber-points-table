@@ -90,10 +90,11 @@ function renderRoundInput() {
     if (eliminated[i]) {
       html += `<div style="padding:12px;margin:8px 0;border-radius:8px;border:1px solid #e74c3c;background:#fff5f5;color:#e74c3c;font-weight:700;text-align:center;">💀 ${playerNames[i]} is Out</div>`;
     } else {
-      html += `<input type="number" id="s${i}" placeholder="${playerNames[i]}'s score" min="0">`;
+      const isLast = (i === numPlayers - 1) || eliminated.slice(i+1).every(e => e);
+      html += `<input type="number" id="s${i}" placeholder="${playerNames[i]}'s score" min="0" inputmode="numeric" ${isLast ? `onfocus="setTimeout(()=>document.getElementById('addRoundBtn').scrollIntoView({behavior:'smooth',block:'center'}),300)"` : ''}>`;
     }
   }
-  html += `<button onclick="document.activeElement.blur(); addRound()" style="margin-top:15px;">Add Round</button>`;
+  html += `<button id="addRoundBtn" onclick="document.activeElement.blur(); addRound()" style="margin-top:15px;">Add Round</button>`;
   document.getElementById('gameArea').innerHTML = html;
 }
 
