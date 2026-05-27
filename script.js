@@ -84,6 +84,7 @@ function startGame() {
 
 function renderRoundInput() {
   halvedMsgs = {};
+  window.scrollTo({ top: 0, behavior: 'smooth' });
   let html = `<hr style="border:0;height:1px;background:#ddd;margin:20px 0;"><h3>Round ${round}</h3>`;
   for (let i = 0; i < numPlayers; i++) {
     if (eliminated[i]) {
