@@ -10,15 +10,16 @@
 
 <body>
   <div id="toastContainer"></div>
-  <div id="bg-text">TIMBER</div>
+
+  <div class="hero-header" id="hero-header">
+    <div class="hero-title">TIMBER</div>
+    <div class="hero-subtitle">Score Calculator</div>
+  </div>
 
   <div class="container">
-    <h2>TIMBER Score Calculator</h2>
-
     <div id="setupArea">
-      <button id="historyBtn" onclick="openHistoryModal()"> View Game History</button>
-      <hr style="border: 0; height: 1px; background: #d1c0c000; margin: 15px 0;">
-      <label for="numPlayers" style="font-weight: 600; display: block; margin-bottom: 5px; text-align: left;">Number of Players</label>
+      <h2 class="setup-title">New Game Setup</h2>
+      <label for="numPlayers">Number of Players</label>
       <select id="numPlayers" onchange="createPlayerInputs()">
         <option value="2">2 Players</option>
         <option value="3" selected>3 Players</option>
@@ -28,14 +29,16 @@
         <option value="7">7 Players</option>
         <option value="8">8 Players</option>
       </select>
-
       <div id="playerNamesDiv"></div>
-      <button onclick="startGame()" style="margin-top: 15px;">Start New Game</button>
+      <button class="start-btn" onclick="startGame()">START GAME</button>
     </div>
 
-    <button id="resetBtn" onclick="resetGame()">Start Fresh / Exit Game</button>
     <div id="gameArea"></div>
   </div>
+
+  <button id="newGameBtn" onclick="newGame()" style="display:none;">NEW GAME</button>
+
+  <button id="historyBtn" onclick="openHistoryModal()">&#x1F551; VIEW GAME HISTORY</button>
 
   <div id="historyModal" class="modal">
     <div class="modal-content">
