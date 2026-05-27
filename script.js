@@ -87,7 +87,7 @@ function renderRoundInput() {
   let html = `<hr style="border:0;height:1px;background:#ddd;margin:20px 0;"><h3>Round ${round}</h3>`;
   for (let i = 0; i < numPlayers; i++) {
     if (eliminated[i]) {
-      html += `<div style="padding:12px;margin:8px 0;border-radius:8px;border:1px solid #e74c3c;background:#fff5f5;color:#e74c3c;font-weight:700;text-align:center;">💀 ${playerNames[i]} is Eliminated</div>`;
+      html += `<div style="padding:12px;margin:8px 0;border-radius:8px;border:1px solid #e74c3c;background:#fff5f5;color:#e74c3c;font-weight:700;text-align:center;">💀 ${playerNames[i]} is Out</div>`;
     } else {
       html += `<input type="number" id="s${i}" placeholder="${playerNames[i]}'s score" min="0">`;
     }
@@ -100,7 +100,7 @@ function showHalvedScreen(completedRound) {
   let html = `<hr style="border:0;height:1px;background:#ddd;margin:20px 0;"><h3>Round ${completedRound}</h3>`;
   for (let i = 0; i < numPlayers; i++) {
     if (eliminated[i]) {
-      html += `<div style="padding:12px;margin:8px 0;border-radius:8px;border:1px solid #e74c3c;background:#fff5f5;color:#e74c3c;font-weight:700;text-align:center;">💀 ${playerNames[i]} is Eliminated</div>`;
+      html += `<div style="padding:12px;margin:8px 0;border-radius:8px;border:1px solid #e74c3c;background:#fff5f5;color:#e74c3c;font-weight:700;text-align:center;">💀 ${playerNames[i]} is Out</div>`;
     } else if (halvedMsgs[i]) {
       const nums = halvedMsgs[i].match(/\d+/g);
       html += `<div style="background:#e8820c;color:#fff;font-weight:700;font-style:italic;font-size:15px;padding:16px;border-radius:10px;margin:8px 0;text-align:center;">✂️ ${playerNames[i]} reached ${nums[0]} → halved to ${nums[1]}!</div>`;
@@ -185,7 +185,7 @@ function renderTable() {
   }
   html += `</tbody><tfoot><tr>`;
   for (let i = 0; i < numPlayers; i++) {
-    html += `<th>${totals[i]} ${eliminated[i] ? '<br><span class="eliminated" style="font-size:11px;">(Eliminated)</span>' : ''}</th>`;
+    html += `<th>${totals[i]} ${eliminated[i] ? '<br><span class="eliminated" style="font-size:11px;">(Out)</span>' : ''}</th>`;
   }
   html += `</tr></tfoot></table></div>`;
   document.getElementById('gameArea').innerHTML += html;
