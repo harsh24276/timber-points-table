@@ -234,10 +234,21 @@ function openHistoryModal() {
     history.slice().reverse().forEach(game => {
       let div = document.createElement('div');
       div.className = 'history-item';
+      const winner = game.playerNames.filter((_,i) => !game.eliminated[i]);
+      let miniTable = `<div style="overflow-x:auto;"><table class="history-mini-table"><tr>`;
+      game.playerNames.forEach(n => { miniTable += `<th>${n}</th>`; });
+      miniTable += `</tr><tr>`;
+      game.totals.forEach((t, i) => {
+        miniTable += `<td>${t}${game.eliminated[i] ? ' 💀' : ''}</td>`;
+      });
+      miniTable += `</tr></table></div>`;
       div.innerHTML = `
-        <div style="font-size:14px;color:#666;margin-bottom:5px;">📅 ${game.date}</div>
-        <div style="font-weight:600;color:#333;">👥 ${game.playerNames.join(', ')}</div>
-        <div style="font-size:14px;color:#2e86de;margin-top:5px;">🔄 Rounds Played: ${game.round - 1}</div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <div style="font-weight:800;color:#0d1b6e;font-size:14px;">🏆 ${winner.length === 1 ? winner[0] + ' won' : 'In Progress'}</div>
+          <div style="font-size:11px;color:#888;">${game.date.split(',')[0]}</div>
+        </div>
+        <div style="font-size:12px;color:#555;margin-bottom:8px;">🔄 ${game.round - 1} rounds &nbsp;·&nbsp; 👥 ${game.numPlayers} players</div>
+        ${miniTable}
       `;
       div.onclick = () => loadGameFromHistory(game.id);
       listDiv.appendChild(div);
