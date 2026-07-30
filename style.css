@@ -147,28 +147,49 @@ button:hover { background-color: #1b4f72; }
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   margin-top: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 5px rgba(0,0,0,0.05);
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(26,58,158,0.15);
 }
 
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   min-width: 300px;
 }
 
 th, td {
-  border: 1px solid #ddd;
-  padding: 10px;
+  border: none;
+  border-bottom: 1px solid #e8f0fe;
+  padding: 12px 10px;
   text-align: center;
   white-space: nowrap;
 }
 
 th {
-  background-color: #2e86de;
+  background: linear-gradient(135deg, #1a3a9e, #2e86de);
   color: white;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.5px;
 }
+
+th:first-child { border-radius: 16px 0 0 0; }
+th:last-child { border-radius: 0 16px 0 0; }
+
+tbody tr:nth-child(even) td { background: #f0f6ff; }
+tbody tr:nth-child(odd) td { background: #ffffff; }
+tbody tr:last-child td { border-bottom: none; }
+
+tfoot tr th {
+  background: linear-gradient(135deg, #0d1b6e, #1a3a9e);
+  color: white;
+  font-size: 15px;
+  padding: 14px 10px;
+  border: none;
+}
+tfoot tr th:first-child { border-radius: 0 0 0 16px; }
+tfoot tr th:last-child { border-radius: 0 0 16px 0; }
 
 @media screen and (max-width: 500px) {
   .container { padding: 15px; }

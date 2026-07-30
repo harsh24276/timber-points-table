@@ -102,7 +102,7 @@ function startGame() {
 function renderRoundInput() {
   halvedMsgs = {};
   window.scrollTo({ top: 0, behavior: 'smooth' });
-  let html = `<hr style="border:0;height:1px;background:#ddd;margin:20px 0;"><h3>Round ${round}</h3>`;
+  let html = `<h3 style="text-align:center;font-size:20px;color:#1a3a9e;margin:10px 0 16px;">Round ${round}</h3>`;
   for (let i = 0; i < numPlayers; i++) {
     if (eliminated[i]) {
       html += `<div style="padding:12px;margin:8px 0;border-radius:8px;border:1px solid #e74c3c;background:#fff5f5;color:#e74c3c;font-weight:700;text-align:center;">💀 ${playerNames[i]} is Out</div>`;
@@ -116,7 +116,7 @@ function renderRoundInput() {
 }
 
 function showHalvedScreen(completedRound) {
-  let html = `<hr style="border:0;height:1px;background:#ddd;margin:20px 0;"><h3>Round ${completedRound}</h3>`;
+  let html = `<h3 style="text-align:center;font-size:20px;color:#1a3a9e;margin:10px 0 16px;">Round ${completedRound}</h3>`;
   for (let i = 0; i < numPlayers; i++) {
     if (eliminated[i]) {
       html += `<div style="padding:12px;margin:8px 0;border-radius:8px;border:1px solid #e74c3c;background:#fff5f5;color:#e74c3c;font-weight:700;text-align:center;">💀 ${playerNames[i]} is Out</div>`;
